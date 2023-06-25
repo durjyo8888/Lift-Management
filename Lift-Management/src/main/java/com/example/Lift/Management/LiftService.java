@@ -24,4 +24,8 @@ public class LiftService {
     public List<Integer> getPassengerMoreThenGivenWeight(int passengerId, int weight, int liftNo) {
         return liftRepository.getPassengerMoreThenGivenWeight(passengerId,weight, liftNo);
     }
+
+    public int getMaxPassengerWithGivenWeight(int liftNo, int x) {
+        return liftRepository.getMaxPassengerWithGivenWeight(liftNo, x);
+    }
 }

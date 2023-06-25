@@ -38,7 +38,14 @@ public class LiftController {
 
             return new ResponseEntity("Id delete successfully", HttpStatus.OK);
     }
+    @GetMapping("/get_passenger_list")
     public ResponseEntity<List<Integer>> getPassengerMoreThenGivenWeight(@RequestParam int passengerId,@RequestParam int weight,@RequestParam int liftNo){
         List<Integer> getPassenger = liftService.getPassengerMoreThenGivenWeight(passengerId,weight,liftNo);
+        return new ResponseEntity(getPassenger,HttpStatus.FOUND);
+    }
+    @GetMapping("/number_ of_passenger_can_travel")
+    public ResponseEntity<Integer> getMaxPassengerWithGivenWeight(@RequestParam int liftNo,@RequestParam int X){
+        int NumberOfPassenger = liftService.getMaxPassengerWithGivenWeight(liftNo, X);
+        return new ResponseEntity(NumberOfPassenger, HttpStatus.FOUND);
     }
 }
