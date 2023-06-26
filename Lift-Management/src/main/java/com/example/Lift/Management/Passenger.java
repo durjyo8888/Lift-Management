@@ -37,4 +37,13 @@ public class Passenger {
     public void setPliftNo(int pliftNo) {
         this.pliftNo = pliftNo;
     }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "passengerId=" + passengerId +
+                ", weight=" + weight +
+                ", pliftNo=" + pliftNo +
+                '}';
+    }
 }

@@ -32,6 +32,11 @@ public class LiftController {
             return new ResponseEntity("Passenger already exist", HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping("/all_passenger")
+    public ResponseEntity<List<Passenger>> getListOfPassengers(){
+        List<Passenger> passengers = liftService.getListOfPassengers();
+        return new ResponseEntity(passengers,HttpStatus.FOUND);
+    }
     @DeleteMapping("/delete_passenger")
     public ResponseEntity<String> deletePassenger(@RequestParam int passengerId){
         liftService.deletePassenger(passengerId);
@@ -39,8 +44,8 @@ public class LiftController {
             return new ResponseEntity("Id delete successfully", HttpStatus.OK);
     }
     @GetMapping("/get_passenger_list")
-    public ResponseEntity<List<Integer>> getPassengerMoreThenGivenWeight(@RequestParam int passengerId,@RequestParam int weight,@RequestParam int liftNo){
-        List<Integer> getPassenger = liftService.getPassengerMoreThenGivenWeight(passengerId,weight,liftNo);
+    public ResponseEntity<List<Integer>> getPassengerMoreThenGivenWeight(@RequestParam int liftNo){
+        List<Integer> getPassenger = liftService.getPassengerMoreThenGivenWeight(liftNo);
         return new ResponseEntity(getPassenger,HttpStatus.FOUND);
     }
     @GetMapping("/number_ of_passenger_can_travel")
@@ -48,4 +53,5 @@ public class LiftController {
         int NumberOfPassenger = liftService.getMaxPassengerWithGivenWeight(liftNo, X);
         return new ResponseEntity(NumberOfPassenger, HttpStatus.FOUND);
     }
+
 }

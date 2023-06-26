@@ -21,11 +21,17 @@ public class LiftService {
          liftRepository.deletePassenger(passengerId);
     }
 
-    public List<Integer> getPassengerMoreThenGivenWeight(int passengerId, int weight, int liftNo) {
-        return liftRepository.getPassengerMoreThenGivenWeight(passengerId,weight, liftNo);
+    public List<Passenger> getListOfPassengers() {
+        return liftRepository.getListOfPassengers();
+    }
+
+    public List<Integer> getPassengerMoreThenGivenWeight(int liftNo) {
+        return liftRepository.getPassengerMoreThenGivenWeight(liftNo);
     }
 
     public int getMaxPassengerWithGivenWeight(int liftNo, int x) {
         return liftRepository.getMaxPassengerWithGivenWeight(liftNo, x);
     }
+
+
 }

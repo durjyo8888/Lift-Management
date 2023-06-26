@@ -28,6 +28,13 @@ public class LiftRepository {
         return passenger.toString();
     }
 
+    public List<Passenger> getListOfPassengers() {
+        List<Passenger> passengers = new ArrayList<>();
+        for(Integer passengerId : passengerDb.keySet()){
+            passengers.add(passengerDb.get(passengerId));
+        }
+        return passengers;
+    }
     public void deletePassenger(int passengerId) {
         for(int passid : passengerDb.keySet()){
             if(passengerDb.get(passid).getPassengerId() < 5){
@@ -36,13 +43,13 @@ public class LiftRepository {
         }
     }
 
-    public List<Integer> getPassengerMoreThenGivenWeight(int passengerId, int weight, int liftNo) {
+    public List<Integer> getPassengerMoreThenGivenWeight(int liftNo) {
         List<Integer> list = new ArrayList<>();
         for(int lift : liftDb.keySet()){
             if(liftDb.get(lift).equals(liftNo))
-                for(Integer pass : liftDb.get(lift).getListOfPassenger())
-                     if(passengerDb.get(passengerId).getWeight() > 50){
-                         list.add(passengerId);
+                for(Passenger passenger : liftDb.get(lift).getListOfPassenger())
+                     if(passengerDb.get(passenger).getWeight() > 50){
+                         list.add(passenger.getPassengerId());
 
             }
         }
@@ -58,4 +65,6 @@ public class LiftRepository {
         }
         return count;
     }
+
+
 }
